@@ -1,7 +1,7 @@
 <?php
     //Безопасное подключение файлов шаблона и скриптов
     function get_template($file) {
-        global $PAGE;
+        global $PAGE, $SYSTEM;
         if(file_exists(ABSPATH . '/' . ADMIN . '/skelet/' . $file)) {
             require(ABSPATH . '/' . ADMIN . '/skelet/' . $file);
         }

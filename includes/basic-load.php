@@ -15,6 +15,20 @@
     //Подключать дополнительные функции
     require_once(ABSPATH . INCLUDES . '/basic-functions.php');
 
+    //Получаю информацию о движке
+
+    $SYSTEM = new stdClass();
+    $SYSTEM->name = 'Detemiro Engine';
+    $SYSTEM->version = '1.0';
+    $SYSTEM->nick    = 'Basic';
+    if(file_exists(ABSPATH . INCLUDES . '/log/system.json')) {
+        $content = read_json(ABSPATH . INCLUDES . '/log/system.json', false);
+        if($content && is_object($content)) {
+            $SYSTEM->version = (isset($content->version) && $content->version) ? $content->version : '1.0';
+            $SYSTEM->nick    = (isset($content->nick) && $content->nick) ? $content->nick : 'custom';
+        }
+    }
+
     //Работа с опциями
     require_once(ABSPATH . INCLUDES . '/basic-options.php');
 

@@ -3,7 +3,7 @@
 
     //Безопасное подключение файлов шаблона и скриптов
     function get_template($file, $base=false) {
-        global $TEMPLATE, $PAGE;
+        global $TEMPLATE, $PAGE, $SYSTEM;
         if(file_exists(ABSPATH . '/public/templates/' . $TEMPLATE . '/' . $file) && !$base) {
             require(ABSPATH . '/public/templates/' . $TEMPLATE . '/' . $file);
         }
