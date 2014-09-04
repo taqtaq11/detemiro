@@ -1,0 +1,3 @@
+ErrorDocument 404 /index.php?page=404_error
+Action php5.4-script  /cgi-bin/php5.4.cgi
+AddType php5.4-script .php

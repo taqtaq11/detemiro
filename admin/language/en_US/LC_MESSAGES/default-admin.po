@@ -1,0 +1,111 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Detemiro\n"
+"POT-Creation-Date: 2014-06-13 13:21+0400\n"
+"PO-Revision-Date: 2014-06-13 13:22+0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.5\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: E:\\Programming\\mys\\detemiro\\project\\admin\n"
+
+#: E:\Programming\mys\detemiro\project\admin/includes/admin-base-actions.php:42
+#: E:\Programming\mys\detemiro\project\admin/includes/admin-base-actions.php:61
+msgid "Код занят"
+msgstr "Code is busy"
+
+#: E:\Programming\mys\detemiro\project\admin/includes/admin-base-actions.php:46
+#: E:\Programming\mys\detemiro\project\admin/includes/admin-base-actions.php:65
+msgid "Не валидный код"
+msgstr "Not validated code"
+
+#: E:\Programming\mys\detemiro\project\admin/includes/admin-base-pages.php:6
+msgid "Главная"
+msgstr "Home"
+
+#: E:\Programming\mys\detemiro\project\admin/includes/admin-base-pages.php:16
+msgid "Настройки"
+msgstr "Settings"
+
+#: E:\Programming\mys\detemiro\project\admin/includes/admin-base-pages.php:25
+msgid "Информация о PHP"
+msgstr "Information about PHP"
+
+#: E:\Programming\mys\detemiro\project\admin/includes/admin-base-pages.php:34
+msgid "Смена пароля админа"
+msgstr "Change admin's password"
+
+#: E:\Programming\mys\detemiro\project\admin/includes/admin-base-pages.php:43
+msgid "Опции"
+msgstr "Options"
+
+#: E:\Programming\mys\detemiro\project\admin/includes/admin-base-pages.php:52
+msgid "Группы опций"
+msgstr "Groups of options"
+
+#: E:\Programming\mys\detemiro\project\admin/includes/admin-base-pages.php:61
+msgid "Добавить опцию"
+msgstr "Add option"
+
+#: E:\Programming\mys\detemiro\project\admin/includes/admin-base-pages.php:70
+msgid "Статистика"
+msgstr "Statistic"
+
+#: E:\Programming\mys\detemiro\project\admin/includes/admin-base-pages.php:79
+msgid "404. Страница не найдена"
+msgstr "404. Page not fount"
+
+#: E:\Programming\mys\detemiro\project\admin/template/header.php:11
+msgid "Админ-панель"
+msgstr "Admin panel"
+
+#: E:\Programming\mys\detemiro\project\admin/template/includes/options.php:48
+msgid "Отправлено"
+msgstr "Send!"
+
+#: E:\Programming\mys\detemiro\project\admin/template/includes/options.php:51
+msgid "Ошибка отправки!"
+msgstr "Error with sending!"
+
+#: E:\Programming\mys\detemiro\project\admin/template/settings/password_change.php:11
+msgid "Пароль обновлён!"
+msgstr "Password updated!"
+
+#: E:\Programming\mys\detemiro\project\admin/template/settings/password_change.php:14
+msgid "Сбой вставки!"
+msgstr "Error of insert!"
+
+#: E:\Programming\mys\detemiro\project\admin/template/settings/password_change.php:18
+msgid "Ошибка!"
+msgstr "Error!"
+
+#: E:\Programming\mys\detemiro\project\admin/template/settings/password_change.php:24
+msgid "Старый пароль"
+msgstr "Current password"
+
+#: E:\Programming\mys\detemiro\project\admin/template/settings/password_change.php:28
+msgid "Новый Пароль"
+msgstr "New password"
+
+#: E:\Programming\mys\detemiro\project\admin/template/settings/password_change.php:31
+msgid "Обновить"
+msgstr "Update"
+
+#~ msgid "Добавить группу опций"
+#~ msgstr "Add group of option"
+
+#~ msgid "Выйти"
+#~ msgstr "Logout"
+
+#~ msgid "Здравствуй мир!"
+#~ msgstr "Hello World!"
+
+#~ msgid "Hello World!"
+#~ msgstr "Здравствуй, мир!"

@@ -1,0 +1,53 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Detemiro\n"
+"POT-Creation-Date: 2014-06-13 13:20+0400\n"
+"PO-Revision-Date: 2014-06-13 13:20+0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.5\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: E:\\Programming\\mys\\detemiro\\project\\includes\n"
+"X-Poedit-SearchPath-1: E:\\Programming\\mys\\detemiro\\project\\public\n"
+"X-Poedit-SearchPath-2: E:\\Programming\\mys\\detemiro\\project\\language\n"
+
+#: E:\Programming\mys\detemiro\project\includes/basic-page-collector.php:66
+msgid "Админ-панель"
+msgstr "Admin Panel"
+
+#: E:\Programming\mys\detemiro\project\includes/public-base-pages.php:6
+#, fuzzy
+msgid "Главная страница"
+msgstr "Home"
+
+#: E:\Programming\mys\detemiro\project\includes/public-base-pages.php:15
+msgid "Регистрация"
+msgstr "Registeration"
+
+#: E:\Programming\mys\detemiro\project\language/other_words.php:3
+msgid "Проверка языкового файла"
+msgstr "Check of language file"
+
+#: E:\Programming\mys\detemiro\project\public/templates/detemiro/index.php:18
+msgid "Неверный пароль"
+msgstr "Wrong password."
+
+#: E:\Programming\mys\detemiro\project\public/templates/detemiro/index.php:22
+msgid "Ошибка авторизации."
+msgstr "Error with authorization."
+
+#: E:\Programming\mys\detemiro\project\public/templates/detemiro/index.php:39
+msgid "Выйти"
+msgstr "Logout"
+
+#~ msgid "Здравствуй мир!"
+#~ msgstr "Hello World!"
+
+#~ msgid "Hello World!"
+#~ msgstr "Здравствуй, мир!"

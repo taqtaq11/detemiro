@@ -1,0 +1,6 @@
+{
+    "name": "Google ReCaptcha",
+    "version": "1.0" ,
+    "author": "Дмитрий Рубан",
+    "description": "Модуль добавляет ReCaptcha на страницу входа в админ-панель"
+}

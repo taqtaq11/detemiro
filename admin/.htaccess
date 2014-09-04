@@ -1,0 +1,3 @@
+ErrorDocument 404 /admin/index.php?page=404_error
+
+AddDefaultCharset utf-8
