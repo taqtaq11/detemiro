@@ -10,7 +10,7 @@
         if($ID && is_numeric($ID)) {
             $plus = " AND ID != '$ID'";
         }
-        elseif($ID && $query = custom_where($ID)) {
+        elseif($ID && $query = $DETDB->custom_where($ID)) {
             if($res = $DETDB->select($table, 'code', false, $query)) {
                 if(count($res) == 1 && $res[0]->code == $value) {
                     return false;
@@ -349,7 +349,7 @@
         if($ID && is_numeric($ID)) {
             $param = 'ID';
         }
-        elseif($ID) {
+        elseif(validate_code($ID)) {
             $param = 'code';
         }
         else {
