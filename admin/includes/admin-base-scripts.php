@@ -110,14 +110,32 @@
 ?>
     <script>
         $(function() {
-            $('textarea.editor').ckeditor({
-                height:         250,
-                skin:          'bootstrapck',
-                extraPlugins:  'tab,codesnippet',
-                removePlugins: 'about,scayt',
-                tabIndex:       4,
-                tabSpaces:      4
-            }).attr('data-custom-get', 'get_ckeditor_value');
+            $('textarea.editor').each(function() {
+                if($(this).hasClass('editor-mini')) {
+                    $(this).ckeditor({
+                        height: 100,
+                        skin: 'bootstrapck',
+                        extraPlugins: 'tab,codesnippet',
+                        tabIndex: 4,
+                        tabSpaces: 4,
+                        toolbar: [
+                            {name: 'basicstyles', items : ['Bold','Italic','Underline']},
+                            {name: 'links', items: [ 'Link', 'Unlink' ]}
+                        ]
+                    });
+                }
+                else {
+                    $(this).ckeditor({
+                        height:         250,
+                        skin:          'bootstrapck',
+                        extraPlugins:  'tab,codesnippet',
+                        removePlugins: 'about,scayt',
+                        tabIndex:       4,
+                        tabSpaces:      4
+                    })
+                }
+                $(this).attr('data-custom-get', 'get_ckeditor_value');
+            });
             function get_ckeditor_value(input) {
                 input = input || 'textarea.editor';
                 return ($(input).val());

@@ -32,13 +32,13 @@
         <fieldset>
             <legend>Общая информация</legend>
             <div class="row">
-                <div class="field form-group col-lg-6">
+                <div class="field form-group col-lg-8">
                     <label>Наименование  мероприятия</label>
-                    <textarea name="name" class="form-control" rows="5"><?=$event['name'];?></textarea>
+                    <textarea name="name" class="editor editor-mini form-control" rows="5"><?=$event['name'];?></textarea>
                 </div>
             </div>
             <div class="row">
-                <div class="field form-group col-lg-6">
+                <div class="field form-group col-lg-8">
                     <label>Место проведения</label>
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
@@ -47,11 +47,11 @@
                 </div>
             </div>
             <div class="row">
-                <div class="field form-group col-lg-6">
+                <div class="field form-group col-lg-8">
                     <label>Ответственный</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input type="text" name="worker" class="form-control" value="<?=$event['worker'];?>" required />
+                            <textarea name="worker" class="form-control" required><?=$event['worker'];?></textarea>
                         </div>
                 </div>
             </div>
