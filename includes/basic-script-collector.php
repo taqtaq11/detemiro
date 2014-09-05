@@ -122,13 +122,22 @@
         'priority' => 14,
         'category' => 'all'
     ));
+    //Cookie
+    add_script(array(
+        'code'     => 'cookie',
+        'type'     => 'script',
+        'link'     => BASE_URL . INCLUDES . '/js/jquery.cookie.min.js',
+        'zone'     => 'header',
+        'priority' => 4,
+        'category' => 'all'
+    ));
     //Detlib
     add_script(array(
         'code'     => 'detlib',
         'type'     => 'script',
         'link'     => BASE_URL . INCLUDES . '/js/jquery.detlib.min.js',
         'zone'     => 'header',
-        'priority' => 3,
+        'priority' => 6,
         'category' => 'all'
     ));
 ?>

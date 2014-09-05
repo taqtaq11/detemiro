@@ -185,7 +185,7 @@
 
             $(custom.block).append(
                 $(
-                '<div class="message-block alert alert-' + custom.suff + '" data-message="' + i + '">' + 
+                '<div class="message-block message-generate alert alert-' + custom.suff + '" data-message="' + i + '">' + 
                 '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Закрыть</span></button>' + 
                 '<h4 class="message-title">' + custom.title + '</h4>' + 
                 '<div class="messsage-body">' + custom.text + '</div>' +
@@ -367,18 +367,15 @@
                             $.preload_change_status('success');
                             $.preload_off(function() {
                                 if(res.status && res.body) {
-                                    var get_par = window.location.search;
-                                    get_par = ((get_par.substring(0, 1) == '?') ? '&' : '?') + 'message=' + JSON.stringify([res.status, res.body, res.title]);
-                                    window.location.href += get_par;
+                                    $.cookie('reload_message', JSON.stringify([res.status, res.body, res.title]), { expires: 1, path: '/'});
                                 }
-                                else {
-                                    $location.reload();
-                                }
+                                location.reload();
                             });
                         }
                     }
                     $.preload_off(function() {
                         if(res.status && res.status != 'loading' && res.body) {
+                            $('.message-generate').remove();
                             $.detmessage({
                                 'text':  res.body,
                                 'title': res.title,

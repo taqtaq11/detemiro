@@ -3,8 +3,8 @@
     require_once(ABSPATH . INCLUDES . '/basic-modules-doit.php');
 
     //Проверка сообщений
-    if(isset($_GET['message'])) {
-        $message = json_decode($_GET['message'], true);
+    if(isset($_COOKIE['reload_message']) && check_json($_COOKIE['reload_message'])) {
+        $message = json_decode($_COOKIE['reload_message'], true);
         if(!is_array($message)) {
             $message = array('warning', $message, 'Внимание!');
         }
@@ -19,10 +19,11 @@
                 'title' => $message[2],
                 'type'  => $message[0],
                 'text'  => $message[1],
-                'class' => "alert alert-{$message[0]}"
+                'class' => "message-generate alert alert-{$message[0]}"
             ));
         }
         unset($message);
+        destroy_cookie('reload_message');
     }
 
     actions_zone('before_form_page');
