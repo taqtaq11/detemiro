@@ -44,39 +44,51 @@
         }
     }
 
-    //Получить список доступных модулей
-    function get_modules_list() {
+    //Получить заданный список доступных модулей
+    function get_modules_list($size = 10, $offset=0) {
         $modules = scandir(ABSPATH . '/' . MODULES);
 
         $res = array();
+        $i = $o = 0;
 
         foreach($modules as $dir) {
             $path = ABSPATH . '/' . MODULES . '/' . $dir;
             if(is_dir($path) && file_exists($path . '/main.php')) {
-                $custom = array(
-                    'name'        => $dir,
-                    'description' => '',
-                    'version'     => '',
-                    'author'      => 'Unnamed',
-                    'url'         => ''
-                );
-
-                if(file_exists($path . '/info.json')) {
-                    $content = read_json($path . '/info.json', true);
-                    if($content && is_assoc_array($content)) {
-                        $custom = set_merge($custom, $content, false, array(
-                            'clear' => true
-                        ));
+                $o++;
+                if($o > $offset) {
+                    $i++;
+                    if($i > $size) {
+                        break;
                     }
+                    $custom = array(
+                        'name'        => $dir,
+                        'description' => '',
+                        'version'     => '',
+                        'author'      => 'Unnamed',
+                        'url'         => ''
+                    );
+
+                    if(file_exists($path . '/info.json')) {
+                        $content = read_json($path . '/info.json', true);
+                        if($content && is_assoc_array($content)) {
+                            $custom = set_merge($custom, $content, false, array(
+                                'clear' => true
+                            ));
+                        }
+                    }
+
+                    $custom['path'] = $dir;
+
+                    $res[] = $custom;
                 }
-
-                $custom['path'] = $dir;
-
-                $res[] = $custom;
             }
         }
 
         return $res;
+    }
+
+    function get_modules_count() {
+        return (count(scandir(ABSPATH . '/' . MODULES)) - 2);
     }
 
     //Обновить модули

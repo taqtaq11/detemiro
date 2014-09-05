@@ -71,22 +71,21 @@
                 $custom['offset'] = $custom['limit'] * ($custom['current'] - 1);
             }
         }
-
         if($custom['handler']) {
             $pre = null;
             if(is_string($custom['handler'])) {
-                $pre = make_action($custom['handler']);
+                $pre = make_action($custom['handler'], $custom);
             }
             elseif(is_callable($custom['handler'])) {
-                $pre = call_user_func($custom['handler']);
+                $pre = call_user_func($custom['handler'], $custom);
             }
             if($pre && (is_object($pre) || is_array($pre))) {
                 $custom = set_merge($custom, $pre, true);
             }
         }
 
-        if($custom['pagi'] && $custom['all'] === null && isset($par['table'])) {
-            $custom['all'] = $DETDB->count($par['table']);
+        if($custom['pagi'] && $custom['all'] === null) {
+            $custom['all'] = (isset($par['table'])) ? $DETDB->count($par['table']) : 1;
         }
 
         if($custom['body'] == '' && isset($par['table'])) {
@@ -146,7 +145,7 @@
             $out = '';
 
             $class = ($class) ? ' ' . $class : $class;
-            $out .= '<ul class="pagination' . $class . '">';
+            $out .= '<div class="pagination-block"><ul class="pagination' . $class . '">';
 
             if($PAGE->content['current'] <= 1) {
                 $out .= '<li class="disabled"><span>&laquo;</span></li>';
@@ -179,7 +178,7 @@
                 $out .= '<li><a href="' . get_page_link() . '&paged=' . ($PAGE->content['current'] + 1) .'">&raquo;</a></li>';
             }
 
-            $out .= '</ul>';
+            $out .= '</ul></div>';
 
             echo $out;
         }

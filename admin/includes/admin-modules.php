@@ -1,6 +1,5 @@
 <?php
     //Pages
-    
     add_apage(array(
         'code'     => 'modules_panel',
         'title'    => 'Модули',
@@ -8,34 +7,22 @@
         'category' => 'admin',
         'priority' => 15,
         'function' => function() {
+            set_glob_content(array(
+                'pagi'    => true,
+                'limit'   => 10,
+                'all'     => get_modules_count(),
+                'handler' => function() {
+                    global $PAGE;
+                    return array(
+                        'body' => get_modules_list($PAGE->content['limit'], $PAGE->content['offset'])
+                    );
+                }
+            ));
             get_template('modules/panel.php');
         }
     ));
 
     //Others
-    
-    add_action(array(
-        'code'     => 'ajax_update_modules',
-        'rule'     => 'admin_ajax',
-        'category' => 'admin',
-        'function' => function($params=null) {
-            if(isset($params['button']['input']['active'])) {
-                $params = $params['button']['input'];
-            }
-            if(isset($params['active'])) {
-                $res = array();
-                foreach($params['active'] as $key=>$item) {
-                    if(isset($item['on'])) $res[] = array($item['value'], $item['on']);
-                }
-                if(update_modules($res)) {
-                    echo ajax_make_res('reload', 'Модули успешно обновлены', 'Успех!');
-                    die();
-                }
-            }
-            echo ajax_make_res('error', 'Произошла неизвестная ошибка', 'Ошибка!');
-        }
-    ));
-
     add_action(array(
         'code'     => 'ajax_deactivate_module',
         'rule'     => 'admin_ajax',
