@@ -575,8 +575,7 @@
                                     }
                                 ?>
                             </td>
-                            <td>
-                                <p><?=$item->name;?></p>
+                            <td><?=$item->name;?>
                             <?php if($custom['links']): ?>
                                 <p class="controls">
                                     <a href="<?=get_page_link('calendar_event_add').'&event_id='. $item->ID;?>">Редактировать</a> |
