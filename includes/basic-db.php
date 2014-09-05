@@ -57,6 +57,10 @@
                 $custom = set_merge($custom, $par);
             }
 
+            if(!is_numeric($custom['offset']) || !is_numeric($custom['limit']) || !in_array($custom['order_type'], array('ASC', 'DESC'))) {
+                $work = false;
+            }
+
             if($work) {
                 $cond = ($res = $this->custom_where($custom['cond'])) ? ' ' . $res : '';
 

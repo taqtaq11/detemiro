@@ -1,8 +1,8 @@
 <?php
     //Получать имя папки модуля
     function get_module_folder() {
-        $lvl = 1;
-        $current = realpath(debug_backtrace(FALSE, 5)[$lvl]['file']);
+        $current = debug_backtrace(FALSE, 5);
+        $current = realpath($current[1]['file']);
 
         $default = ABSPATH . '/' . MODULES;
 
