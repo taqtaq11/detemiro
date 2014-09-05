@@ -175,7 +175,7 @@
                     format:'H:i',
                     onShow: function(ct){
                         this.setOptions({
-                            maxTime: jQuery('#timepicker-end').val()?jQuery('#timepicker-end').val():false
+                            maxTime: (jQuery('#timepicker-end').val()) ? jQuery('#timepicker-end').val() : false
                         });
                     }
                 });
@@ -184,7 +184,7 @@
                     format:'H:i',
                     onShow: function(ct) {
                         this.setOptions({
-                            minTime: jQuery('#timepicker-start').val()?jQuery('#timepicker-start').val():false
+                            minTime: (jQuery('#timepicker-start').val()) ? jQuery('#timepicker-start').val() : false
                         })
                     }
                 });

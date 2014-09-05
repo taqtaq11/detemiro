@@ -93,7 +93,7 @@
                         <label>Время конца</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-                            <input id="timepicker-end" class="datetimepicker form-control" name="time_end" type="text"  value="<?=($event['date_end'] && $event['date_end'] > 0) ? date('H:i', strtotime($event['date_end'])) : '';?> <?=($event['disable_end']) ? 'disabled' : '';?>"/>
+                            <input id="timepicker-end" class="datetimepicker form-control" name="time_end" type="text"  value="<?=($event['date_end'] && $event['date_end'] > 0) ? date('H:i', strtotime($event['date_end'])) : '';?>" <?=($event['disable_end']) ? 'disabled' : '';?>/>
                         </div>
                     </div>
                 </div>
