@@ -1,6 +1,5 @@
 <?php
     //Main part
-    require_once(ABSPATH . '/' . ADMIN . '/language/other_words.php');
     require_once(ABSPATH . '/' . ADMIN . INCLUDES . '/admin-template.php');
     require_once(ABSPATH . '/' . ADMIN . INCLUDES . '/admin-base-pages.php');
     require_once(ABSPATH . '/' . ADMIN . INCLUDES . '/admin-base-scripts.php');

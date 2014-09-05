@@ -42,7 +42,7 @@
         else {
             $USER = (object) array(
                 'ID'           => null,
-                'display_name' => _('Гость'),
+                'display_name' => 'Гость',
                 'code'         => 'ghost',
                 'groups_ID'    => '["2"]', //["public"]
                 'last_ip'      => $_SERVER['REMOTE_ADDR'],

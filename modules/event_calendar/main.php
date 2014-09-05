@@ -221,7 +221,7 @@
                 <div class="field form-group"><div class="checkbox">
                     <label>
                         <input name="calendar_events_range" type="checkbox" value="true" class="data-control"<?=($try) ? ' checked' : '';?>>
-                        <?=_('Проверка перекрёстных событий');?>
+                        <?='Проверка перекрёстных событий';?>
                     </label>
                 </div></div>
             </div>

@@ -2,7 +2,7 @@
     add_apage(array(
         'code'     => 'console',
         'parent'   => 'settings',
-        'title'    => _('Консоль'),
+        'title'    => 'Консоль',
         'rule'     => 'admin_settings',
         'category' => 'admin',
         'priority' => 20,

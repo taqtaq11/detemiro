@@ -14,13 +14,13 @@
             <h3>Основные настройки</h3>
             <div class="row">
                 <div class="field form-group col-lg-4">
-                    <label><?=_('Имя сайта');?></label>
+                    <label><?='Имя сайта';?></label>
                     <input name="site_name" type="text" class="form-control data-control" value="<?=$params['site_name']; ?>" required>
                 </div>
             </div>
             <div class="row">
                 <div class="field form-group col-lg-4">
-                    <label><?=_('Основная тема');?></label>
+                    <label><?='Основная тема';?></label>
                     <?php
                         $templates = get_templates();
 
@@ -40,7 +40,7 @@
             </div>
             <div class="row">
                 <div class="field form-group col-lg-4">
-                    <label><?=_('Группа по-умолчанию');?></label>
+                    <label><?='Группа по-умолчанию';?></label>
                     <?php
                         $groups = get_users_groups();
                         $current = $params['default_group'];
@@ -63,20 +63,20 @@
             <div class="field form-group"><div class="checkbox">
                 <label>
                     <input name="login_ip" type="checkbox" value="true" class="data-control"<?=($params['login_ip']) ? ' checked' : '';?>>
-                    <?=_('Проверка IP-адреса');?>
+                    <?='Проверка IP-адреса';?>
                 </label>
             </div></div>
             <div class="field form-group"><div class="checkbox">
                 <label>
                     <input name="login_agent" type="checkbox" value="true" class="data-control"<?=($params['login_agent']) ? ' checked' : '';?>>
-                    <?=_('Проверка юзер-агента');?>
+                    <?='Проверка юзер-агента';?>
                 </label>
             </div></div>
             <hr />
             <h3>Cookie</h3>
             <div class="row">
                 <div class="field form-group col-lg-4">
-                    <label><?=_('Время жизни Cookie профиля (в мин)');?></label>
+                    <label><?='Время жизни Cookie профиля (в мин)';?></label>
                     <input name="cookie_login_live" type="number" class="form-control data-control" value="<?=$params['cookie_login_live']; ?>" required>
                 </div>
             </div>
@@ -85,5 +85,5 @@
         <?php actions_zone('settings_panels') ?>
     </div>
     <hr />
-    <button name="submit" type="submit" class="btn btn-primary" data-action="settings_update"><span class="glyphicon glyphicon-ok"></span> <?=_('Сохранить');?></button>
+    <button name="submit" type="submit" class="btn btn-primary" data-action="settings_update"><span class="glyphicon glyphicon-ok"></span> <?='Сохранить';?></button>
 </form>

@@ -2,7 +2,7 @@
     //All basic pages
     add_apage(array(
         'code'     => 'index',
-        'title'    => _('Главная'),
+        'title'    => 'Главная',
         'function' => 'admin_index',
         'rule'     => 'admin_panel',
         'category' => 'admin',
@@ -11,7 +11,7 @@
 
     add_apage(array(
         'code'     => '404_error',
-        'title'    => _('404. Страница не найдена'),
+        'title'    => '404. Страница не найдена',
         'function' => 'admin_404',
         'rule'     => 'admin_panel',
         'category' => 'admin',
@@ -20,7 +20,7 @@
 
     add_apage(array(
         'code'     => 'login',
-        'title'    => _('Вход в админ-панель'),
+        'title'    => 'Вход в админ-панель',
         'function' => 'admin_show_login',
         'rule'     => 'public',
         'category' => 'admin',

@@ -2,7 +2,7 @@
     /*
     add_apage(array(
         'code'     => 'detblocks_panel',
-        'title'    => _('DET-блоки'),
+        'title'    => 'DET-блоки',
         'rule'     => 'admin_detblocks',
         'category' => 'admin',
         'priority' => 6,
@@ -13,7 +13,7 @@
 
     add_apage(array(
         'code'     => 'detblocks_types',
-        'title'    => _('Типы контента'),
+        'title'    => 'Типы контента',
         'rule'     => 'admin_detblocks',
         'category' => 'admin',
         'priority' => 3,
@@ -30,7 +30,7 @@
 
     add_apage(array(
         'code'     => 'detblocks_type_add',
-        'title'    => _('Добавить DET-блок'),
+        'title'    => 'Добавить DET-блок',
         'rule'     => 'admin_detblocks',
         'category' => 'admin',
         'priority' => -1,
@@ -42,7 +42,7 @@
 
     add_apage(array(
         'code'     => 'detblocks_categoreis',
-        'title'    => _('Категории контента'),
+        'title'    => 'Категории контента',
         'rule'     => 'admin_detblocks',
         'category' => 'admin',
         'priority' => 5,
@@ -54,7 +54,7 @@
 
     add_apage(array(
         'code'     => 'detblocks_fields',
-        'title'    => _('Поля'),
+        'title'    => 'Поля',
         'rule'     => 'detblocks',
         'category' => 'admin',
         'priority' => 7,
@@ -66,7 +66,7 @@
 
     add_apage(array(
         'code'     => 'detblocks_content',
-        'title'    => _('Контент'),
+        'title'    => 'Контент',
         'rule'     => 'detblocks',
         'category' => 'admin',
         'priority' => 7,

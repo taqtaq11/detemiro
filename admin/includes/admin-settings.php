@@ -2,7 +2,7 @@
     //Pages
     add_apage(array(
         'code'     => 'settings',
-        'title'    => _('Настройки'),
+        'title'    => 'Настройки',
         'rule'     => 'admin_settings',
         'category' => 'admin',
         'priority' => 5,
@@ -104,7 +104,7 @@
     add_apage(array(
         'code'     => 'settings_php',
         'parent'   => 'settings',
-        'title'    => _('Информация о PHP'),
+        'title'    => 'Информация о PHP',
         'rule'     => 'admin_settings',
         'category' => 'admin',
         'priority' => 100,
@@ -116,7 +116,7 @@
     add_apage(array(
         'code'     => 'options',
         'parent'   => 'settings',
-        'title'    => _('Опции'),
+        'title'    => 'Опции',
         'rule'     => 'admin_settings',
         'category' => 'admin',
         'priority' => 0,

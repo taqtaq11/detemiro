@@ -34,7 +34,7 @@
                         <td data-id="<?=$item->ID;?>"><?=$item->ID; ?></td>
                         <td><?=$item->code; ?></td>
                         <td>
-                            <p><?=_($item->name); ?></p>
+                            <p><?=$item->name; ?></p>
                             <p>
                                 <a class="button-control table-edit"
                                     data-set-action="update_option"

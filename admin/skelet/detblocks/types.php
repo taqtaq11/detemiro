@@ -25,7 +25,7 @@
                         <td data-id="<?=$item->ID; ?>"><?=$item->ID; ?></td>
                         <td><?=$item->code; ?></td>
                         <td>
-                            <p><?=_($item->name); ?></p>
+                            <p><?=$item->name; ?></p>
                             <p>
                                 <a href="<?=get_page_link('detblocks_type_add')?>&block_id=<?=$item->ID; ?>">Редактировать</a>
                                 |

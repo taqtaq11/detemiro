@@ -24,7 +24,7 @@
 
         $head = ($main == '') ? get_option('site_name') : $main; 
 
-        echo $head . ' - ' . _($PAGE->title);
+        echo $head . ' - ' . $PAGE->title;
         if($paged) echo " (Страница $paged)";
     }
 

@@ -3,7 +3,7 @@
 
     add_apage(array(
         'code'     => 'users_panel',
-        'title'    => _('Пользователи'),
+        'title'    => 'Пользователи',
         'rule'     => 'admin_users',
         'category' => 'admin',
         'priority' => 20,
@@ -19,7 +19,7 @@
 
     add_apage(array(
         'code'     => 'user_info',
-        'title'    => _('Информация о пользователе'),
+        'title'    => 'Информация о пользователе',
         'rule'     => 'admin_users',
         'parent'   => 'users_panel',
         'category' => 'admin',
@@ -35,7 +35,7 @@
     add_apage(array(
         'code'     => 'edit_user',
         'parent'   => 'users_panel',
-        'title'    => _('Редактирование пользователя'),
+        'title'    => 'Редактирование пользователя',
         'function' => 'admin_edit_users',
         'rule'     => 'admin_users',
         'category' => 'admin',
@@ -49,7 +49,7 @@
     add_apage(array(
         'code'     => 'user_groups',
         'parent'   => 'users_panel',
-        'title'    => _('Группы пользователей'),
+        'title'    => 'Группы пользователей',
         'rule'     => 'admin_users',
         'category' => 'admin',
         'priority' => 10,
@@ -66,7 +66,7 @@
     add_apage(array(
         'code'     => 'user_rules',
         'parent'   => 'users_panel',
-        'title'    => _('Настройка прав'),
+        'title'    => 'Настройка прав',
         'rule'     => 'admin_settings, admin_rules',
         'category' => 'admin',
         'priority' => 10,

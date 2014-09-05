@@ -28,7 +28,7 @@
                         <td data-id="<?=$item->ID; ?>"><?=$item->ID; ?></td>
                         <td data-code="<?=$item->code; ?>"><?=$item->code; ?></td>
                         <td>
-                            <p class="field"><?=_($item->name); ?></p>
+                            <p class="field"><?=$item->name; ?></p>
                             <p class="controls">
                                 <a class="button-control table-edit"
                                     data-set-action="update_user_group"

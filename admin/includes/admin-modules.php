@@ -3,7 +3,7 @@
     
     add_apage(array(
         'code'     => 'modules_panel',
-        'title'    => _('Модули'),
+        'title'    => 'Модули',
         'rule'     => 'admin_modules, admin_settings',
         'category' => 'admin',
         'priority' => 15,

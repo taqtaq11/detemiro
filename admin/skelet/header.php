@@ -20,7 +20,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?=get_page_link('index'); ?>"><?=_("Админ-панель")?></a>
+                <a class="navbar-brand" href="<?=get_page_link('index'); ?>"><?='Админ-панель';?></a>
             </div>
             <nav id="main-nav" class="navbar-collapse collapse" role="navigation">
                 <?php apage_navigation(array(
