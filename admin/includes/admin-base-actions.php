@@ -1,11 +1,35 @@
 <?php
     add_action(array(
         'code'     => 'check_logout',
-        'function' => 'action_check_logout',
         'rule'     => 'public',
         'category' => 'admin',
         'zone'     => 'before_form_page',
-        'priority' => '-3'
+        'priority' => '-3',
+        'function' => function($par = false) {
+            if((isset($_POST['logout']) || $par)  && check_login()) {
+                destroy_cookie('user_ID');
+                destroy_cookie('user_hash');
+
+                int_user();
+                
+                if(!$par) return make_action('check_login');
+                else return true;
+
+            }
+            return false;
+        }
+    ));
+
+    add_action(array(
+        'code'     => 'ajax_logout',
+        'rule'     => 'public',
+        'category' => 'admin',
+        'function' => function() {
+            if(make_action('check_logout', true)) {
+                echo ajax_make_res('reload', 'Вы успешно вышли', 'Успех!');
+            }
+            else echo ajax_make_res('error', 'По неизвестным причинам произошла ошибка', 'Ошибка!');
+        }
     ));
 
     add_action(array(
@@ -70,17 +94,6 @@
         }
         return true;
      }
-
-    function action_check_logout() {
-        if(isset($_POST['logout']) && check_login()) {
-            destroy_cookie('user_ID');
-            destroy_cookie('user_hash');
-
-            int_user();
-            
-            make_action('check_login');
-        }
-    }
 
     function action_login() {
         global $DETDB;
