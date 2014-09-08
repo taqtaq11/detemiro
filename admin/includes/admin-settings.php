@@ -197,7 +197,12 @@
                 echo ajax_make_res('reload', "Опция {$params['code']} успешно обновлена", 'Успех!');
             }
             else {
-                echo ajax_make_res('error', 'Проверьте правильность заполненных полей', 'Ошибка!');
+                echo ajax_make_res(array(
+                    'status' => 'error',
+                    'body'   => 'Проверьте правильность заполненных полей',
+                    'title'  => 'Ошибка!',
+                    'error'  => true
+                ));
             }
         }
     ));

@@ -56,7 +56,25 @@
                 $sett = ($param == 'ID') ? $ID : null;
 
                 if(validate_code($custom['code'])) {
-                    return ($DETDB->update('options', $custom, "WHERE $param='$ID'"));
+                    if(!check_code('options', $custom['code'], 'code', $ID)) {
+                        return ($DETDB->update('options', $custom, "WHERE $param='$ID'"));
+                    }
+                    else {
+                        push_output_message(array(
+                            'text'  => 'Данный код уже занят.',
+                            'title' => 'Ошибка!',
+                            'class' => 'alert alert-warning',
+                            'type'  => 'error'
+                        ));
+                    }
+                }
+                else {
+                    push_output_message(array(
+                        'text'  => 'Отправлен неправильный (невалидный) код.',
+                        'title' => 'Ошибка!',
+                        'class' => 'alert alert-warning',
+                        'type'  => 'error'
+                    ));
                 }
             }
             else {
@@ -82,7 +100,7 @@
                 }
                 else {
                     push_output_message(array(
-                        'text'  => 'Данный код уже занят',
+                        'text'  => 'Данный код уже занят.',
                         'title' => 'Ошибка!',
                         'class' => 'alert alert-warning',
                         'type'  => 'error'
@@ -91,7 +109,7 @@
             }
             else {
                 push_output_message(array(
-                    'text'  => 'Отправлен неправильный (невалидный) код',
+                    'text'  => 'Отправлен неправильный (невалидный) код.',
                     'title' => 'Ошибка!',
                     'class' => 'alert alert-warning',
                     'type'  => 'error'
