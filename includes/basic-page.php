@@ -57,7 +57,6 @@
     function set_glob_content($par) {
         global $PAGE, $DETDB;
 
-        $obj = ($par && is_object($par)) ? true : false;
         $par = take_good_array($par);
 
         $custom = &$PAGE->content;
@@ -98,10 +97,6 @@
 
         if($custom['pagi'] && ($custom['all'] === null || ($custom['all'] && $custom['limit'] && ceil($custom['all'] / $custom['limit']) < $custom['current']))) {
             redirect(get_current_key(), true);
-        }
-
-        if(!isset($par['pagi']) && !isset($par['body']) && !isset($par['table']) && !isset($par['handler'])) {
-            $custom['body'] = (($obj) ? (object) $par : $par);
         }
     }
 

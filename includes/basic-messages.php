@@ -40,18 +40,21 @@
     }
 
     //Отображаю итоговые сообщения после прохода интерпритатора
-    function get_output_result_messages($type = '') {
+    function get_output_result_messages($type = '', $clean = false) {
         $ID = 'output-messages';
 
         $messages = get_output_messages($type);
         $out = '';
 
         foreach($messages as $key => $item) {
-            $out .= '<div class="message-block ' . $item->class . '" data-message="' . $key . '">';
-            if($item->closed) $out .= '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Закрыть</span></button>';
-            if($item->title)   $out .= '<h4 class="message-title">' . $item->title . '</h4>';
-            if($item->text)    $out .= '<div class="message-body">' . $item->text . '</div>';
-            $out .= '</div>';
+            if(!$clean) $out .= '<div class="message-block ' . $item->class . '" data-message="' . $key . '">';
+            if(!$clean && $item->closed) $out .= '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Закрыть</span></button>';
+            if(!$clean && $item->title)   $out .= '<h4 class="message-title">' . $item->title . '</h4>';
+            if(!$clean && $item->text)    $out .= '<div class="message-body">' . $item->text . '</div>';
+            if(!$clean) $out .= '</div>';
+            elseif($item->text) {
+                $out .= '<div class="message-block-clean">' . $item->text . '</div>';
+            }
         }
 
         return $out;

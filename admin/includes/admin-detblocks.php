@@ -1,5 +1,4 @@
 <?php
-    /*
     add_apage(array(
         'code'     => 'detblocks_panel',
         'title'    => 'DET-блоки',
@@ -34,7 +33,7 @@
         'rule'     => 'admin_detblocks',
         'category' => 'admin',
         'priority' => -1,
-        'parent'   => 'detblocks_panel',
+        'parent'   => 'detblocks_types',
         'function' => function() {
             get_template('detblocks/type_add.php');
         }
@@ -86,43 +85,72 @@
     ));
 
     function action_detblocks_type() {
-        global $DETDB;
+        global $DETDB, $PAGE;
 
         $current = (isset($_GET['block_id']) && is_numeric($_GET['block_id'])) ? $_GET['block_id'] : null;
 
-        $block = array(
-            'code' => '',
-            'name' => ''
+        $temp = $block = (object) array(
+            'code'        => '',
+            'name'        => '',
+            'description' => ''
         );
 
-        if($current) {
-            
+        if($current && $res = get_detblock_type($current)) {
+            $block = set_merge($block, $res);
+            $PAGE->title = 'Обновить DET-блок';
+        }
+        else {
+            $current = null;
         }
 
-        if(isset($_POST['save'])) {
+        if(isset($_POST['action']) && $_POST['action'] == 'save') {
             $block = set_merge($block, $_POST);
-            set_glob_content((object) $block);
 
-            if($ID = add_detblock($block)) {
+            if($current) {
+                if(update_detblock($current, $block)) {
+                    push_output_message(array(
+                        'text'  => "DET-блок успешно обновлён",
+                        'title' => 'Успех!',
+                        'class' => 'alert alert-success',
+                        'type'  => 'success'
+                    ));
+                    $block->ID = $current;
+                    set_glob_content(array('body' => $block));
+                    return true;
+                }
+            }
+            elseif($ID = add_detblock($block)) {
                 push_output_message(array(
-                    'text'  => "DET-блок {$block['code']} успешно добавлен!<br />Создана таблица {$DETDB->prefix}detblocks_content_{$ID}",
+                    'text'  => "DET-блок {$block->code} успешно добавлен!<br />Создана таблица {$DETDB->prefix}detblocks_content_{$ID}",
                     'title' => 'Успех!',
                     'class' => 'alert alert-success',
                     'type'  => 'success'
                 ));
+                set_glob_content(array('body' => $temp));
+                return true;
             }
             else {
-                push_output_message(array(
-                    'text'  => 'Произошла неизвестная ошибка',
-                    'title' => 'Ошибка!',
-                    'class' => 'alert alert-danger',
-                    'type'  => 'error'
-                ));
+                set_glob_content(array('body' => $block));
+                return false;
             }
         }
-        else {
-            set_glob_content((object) $block);
+        elseif(isset($_POST['action']) && $_POST['action'] == 'delete') {
+            if(delete_detblock($current)) {
+                push_output_message(array(
+                    'text'  => "DET-блок {$block->code} и все его связи успешно удалены!",
+                    'title' => 'Успех!',
+                    'class' => 'alert alert-success',
+                    'type'  => 'success'
+                ));
+                set_glob_content(array('body' => $temp));
+                return true;
+            }
         }
+
+        if($current) $block->ID = $current;
+        set_glob_content(array('body' => $block));
+
+        return true;
     }
 
     add_action(array(
@@ -138,5 +166,4 @@
             }
         }
     ));
-    */
 ?>

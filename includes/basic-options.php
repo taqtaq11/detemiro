@@ -77,7 +77,25 @@
             $custom['code'] = canone_code($custom['code']);
 
             if(validate_code($custom['code'])) {
-                return ($DETDB->insert('options', $custom));
+                if(!check_code('options', $custom['code'], 'code')) {
+                    return ($DETDB->insert('options', $custom));
+                }
+                else {
+                    push_output_message(array(
+                        'text'  => 'Данный код уже занят',
+                        'title' => 'Ошибка!',
+                        'class' => 'alert alert-warning',
+                        'type'  => 'error'
+                    ));
+                }
+            }
+            else {
+                push_output_message(array(
+                    'text'  => 'Отправлен неправильный (невалидный) код',
+                    'title' => 'Ошибка!',
+                    'class' => 'alert alert-warning',
+                    'type'  => 'error'
+                ));
             }
         }
 

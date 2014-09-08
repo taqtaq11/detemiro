@@ -42,7 +42,7 @@
     //Привожу код к каноническому виду
     function canone_code($code) {
         if(is_string($code)) {
-            return stripslashes(str_replace('/', '', str_replace(array(' ', ',', '.'), '_', trim(mb_strtolower($code)))));
+            return substr(stripslashes(str_replace('/', '', str_replace(array(' ', ',', '.'), '_', trim(mb_strtolower($code))))), 0, 60);
         }
         else {
             return $code;
@@ -460,12 +460,13 @@
     //AJAX
 
     //Генерация AJAX-результата
-    function ajax_make_res($param = 'success', $body = '', $title='', $data='') {
+    function ajax_make_res($param = 'success', $body = '', $title='', $data='', $error=false) {
         $custom = array(
             'status' => '',
             'body'   => $body,
             'title'  => $title,
-            'data'   => $data
+            'data'   => $data,
+            'error'  => $error
         );
         if(is_merged($param)) {
             $custom = set_merge($custom, $param);
@@ -473,6 +474,11 @@
         else {
             $custom['status'] = $param;
         }
+        if($custom['error']) {
+            $custom['body'] .= get_output_result_messages('error', true);
+        }
+
+        unset($custom['error']);
 
         return json_val_encode($custom);
     }

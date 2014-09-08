@@ -158,7 +158,7 @@
         }
 
         if(isset($_POST['action']) && $_POST['action'] == 'save') {
-            $res = array(
+            $temp = $res = array(
                 'login'        => '',
                 'code'         => '',
                 'display_name' => '',
@@ -192,6 +192,7 @@
                             'class' => 'alert alert-danger'
                         ));
                     }
+                    $res['ID'] = $current;
                     set_glob_content(array('body' => (object) $res));
                 }
                 else {
@@ -226,8 +227,9 @@
                 'text'  => 'Пользователь успешно удалён',
                 'class' => 'alert alert-success'
             ));
+            set_glob_content(array('body' => (object) $temp));
         }
-        elseif($current && $user = get_user($current, 'login, code, display_name, mail, groups_ID, rules', true)) {
+        elseif($current && $user = get_user($current, 'ID, login, code, display_name, mail, groups_ID, rules', true)) {
             set_glob_content(array('body' => $user));
         }
     }

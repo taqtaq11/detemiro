@@ -15,8 +15,9 @@
             <thead>
                 <tr>
                     <th width="5%">ID</th>
-                    <th width="10%">Код</th>
-                    <th>Имя</th>
+                    <th width="15%">Код</th>
+                    <th width="25%">Имя</th>
+                    <th>Описание</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,10 +29,9 @@
                             <p><?=$item->name; ?></p>
                             <p>
                                 <a href="<?=get_page_link('detblocks_type_add')?>&block_id=<?=$item->ID; ?>">Редактировать</a>
-                                |
-                                <a class="button-control table-delete" data-set-action="delete_detblock">Удалить</a>
                             </p>
                         </td>
+                        <td><?=($item->description) ? '<p>' . $item->description . '</p>' : ''; ?></td>
                     </tr> 
                 <?php endforeach; ?>
             </tbody>
@@ -40,6 +40,7 @@
                     <th>ID</th>
                     <th>Код</th>
                     <th>Имя</th>
+                    <th>Описание</th>
                 </tr>
             </tfoot>
         </table>

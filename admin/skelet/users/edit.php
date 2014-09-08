@@ -5,7 +5,7 @@
 ?>
 
 <script>
-$(document).ready(function() {
+$(function() {
     $('button[name="delete"]').click(function() {
         $.detconfirm('Вы действительно хотите удалить пользователя?', 'Внимание!', function(res) {
             if(res) {
@@ -97,7 +97,7 @@ $(document).ready(function() {
     <hr />
     <div class="form-group">
         <button class="btn btn-primary" name="save"><span class="glyphicon glyphicon-ok"></span> Сохранить</button>
-        <?php if($user): ?>
+        <?php if(isset($user->ID)): ?>
             <button class="btn btn-danger" name="delete" onclick="return false;"><span class="glyphicon glyphicon-trash"></span> Удалить пользователя</button>
         <?php endif ;?>
     </div>
