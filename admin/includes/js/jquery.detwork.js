@@ -3,12 +3,14 @@ jQuery.fn.detwork = function() {
     var doit = function() {
         //Preparing
         var handler = '../includes/basic-ajax.php',
-            selector = $(this).add('.dialog-basic'),
+            selector = $(this).add($(this).find('.dialog-basic')),
             input_types = 'input, select, textarea'
 
         $(this).find('.button-control').parents('form').submit(function() {
             return false;
         });
+
+        console.log(selector);
 
         //Получение параметров
         function get_params(block) {
