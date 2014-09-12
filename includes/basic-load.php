@@ -1,5 +1,5 @@
 <?php
-    if(!(isset($IS_AJAX) && $IS_AJAX)) {
+    if(!isset($CONNECT)) {
         error_reporting(E_ALL);
         ini_set('display_errors', 1);
     }

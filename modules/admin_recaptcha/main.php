@@ -42,7 +42,7 @@
             $private_key = get_option('admin_recaptcha_keys')[1];
 
             if(isset($_POST['recaptcha_challenge_field'])) {
-                $resp = recaptcha_check_answer($private_key, $_SERVER["REMOTE_ADDR"], $_POST['recaptcha_challenge_field'], $_POST["recaptcha_response_field"]);
+                $resp = recaptcha_check_answer($private_key, $_SERVER['REMOTE_ADDR'], $_POST['recaptcha_challenge_field'], $_POST["recaptcha_response_field"]);
                 if(!$resp->is_valid) {
                     $t = false;
                     push_output_message(array(
@@ -69,7 +69,7 @@
             </script>
         ";
 
-        echo recaptcha_get_html($public_key);
+        echo recaptcha_get_html($public_key, null, true);
     }
 
     add_action(array(

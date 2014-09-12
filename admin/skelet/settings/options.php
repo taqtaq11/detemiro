@@ -17,7 +17,7 @@
         </div>
     </div>
     <?php
-        if(count($options) > 0): 
+        if(is_array($options) && count($options) > 0): 
     ?>
         <table class="table table-striped table-hover table-bordered">
             <thead>

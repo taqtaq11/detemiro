@@ -9,6 +9,7 @@
     require_once(ABSPATH . '/' . ADMIN . INCLUDES . '/admin-settings.php');
     require_once(ABSPATH . '/' . ADMIN . INCLUDES . '/admin-users.php');
     require_once(ABSPATH . '/' . ADMIN . INCLUDES . '/admin-modules.php');
+    require_once(ABSPATH . '/' . ADMIN . INCLUDES . '/admin-remote.php');
     //require_once(ABSPATH . '/' . ADMIN . INCLUDES . '/admin-detblocks.php');
 
     //Last part

@@ -70,7 +70,7 @@
             return false;
         }
         elseif(!check_rule($APAGES['index']->rule) && isset($APAGES[get_real_key()]) && !check_rule($APAGES[get_real_key()]->rule)) {
-            if(get_real_key() == 'index') foreach($APAGES as $key=>$item) {
+            if(get_real_key() == 'index' || isset($APAGES[get_real_key()])) foreach($APAGES as $key=>$item) {
                 if($key != 'login' && $key != '404_error' && $item->category == $APAGES['index']->category && !$item->parent && check_rule($item->rule)) {
                     replace_page($key);
                     return false;
@@ -90,7 +90,6 @@
             ));
 
             return false;
-
         }
         return true;
      }

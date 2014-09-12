@@ -483,9 +483,29 @@
         return json_val_encode($custom);
     }
 
+    //Это соединение
+    function is_connect() {
+        global $CONNECT;
+        return (isset($CONNECT) && $CONNECT->type);
+    }
+
     //Это AJAX-запрос
     function is_ajax() {
-        global $IS_AJAX;
-        return (isset($IS_AJAX) && $IS_AJAX);
+        global $CONNECT;
+        return (is_connect() && $CONNECT->type == 'ajax');
+    }
+
+    //Это соединение
+    function is_remote() {
+        global $CONNECT;
+        return (is_connect() && $CONNECT->type == 'remote');
+    }
+
+    function get_connect() {
+        global $CONNECT;
+        if(is_connect()) {
+            return $CONNECT;
+        }
+        else return null;
     }
 ?>

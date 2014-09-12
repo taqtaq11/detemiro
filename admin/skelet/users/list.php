@@ -10,7 +10,7 @@
         </div>
     </div>
     <?php
-        if(count($users) > 0): 
+        if(is_array($users) && count($users) > 0): 
     ?>
         <table class="table table-striped table-hover table-bordered" width="100%">
             <thead>

@@ -1,7 +1,7 @@
 <?php
     //Генерирую хеш заданной длины
     function random_hash($L=15) {
-        $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHI JKLMNOPRQSTUVWXYZ0123456789!@#$%^&*()';
+        $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPRQSTUVWXYZ0123456789!@#$%^*()';
         $hash = '';
         $C = strlen($chars) - 1;
 
@@ -333,5 +333,142 @@
             $obj = $copy;
         }
         return $obj;
+    }
+
+    //Remote Actions
+    function check_remote_key($key='') {
+        global $DETDB;
+        $L = strlen($key);
+        if($L>=16 && $L<=20 && ($res = $DETDB->select('remote_keys', 'ID', true, "WHERE key_value='$key'"))) {
+            return true;
+        }
+        return false;
+    }
+
+    function get_remote_key_rules($key='') {
+        global $DETDB, $CONNECT;
+        if(!$key) $key = $CONNECT->key;
+        if($key && $res = $DETDB->select('remote_keys', 'rules', true, "WHERE key_value='$key'")) {
+            return $res->rules;
+        }
+        else {
+            return '';
+        }
+    }
+
+    function generate_remote_key() {
+        return random_hash(rand(16,20));
+    }
+
+    function get_remote_key($ID) {
+        global $DETDB;
+        if($res = $DETDB->select('remote_keys', '*', true, "WHERE ID=$ID")) {
+            if(check_json($res->rules)) {
+                $res->rules = json_decode($res->rules, true);
+            }
+            return $res;
+        }
+        return null;
+    }
+
+    function add_remote_key($key) {
+        global $DETDB;
+        if(is_object($key)) {
+            $key = (array) $key;
+        }
+        if(is_merged($key) && isset($key['key_value'])) {
+            $L = strlen($key['key_value']);
+
+            $custom = set_merge(array(
+                'name'      => '',
+                'key_value' => '',
+                'rules'     => ''
+            ), $key);
+
+            if($L>=16 && $L<=20) {
+                if(preg_match('/^[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPRQSTUVWXYZ0123456789!@#$%^*()]{16,20}$/i', $custom['key_value'])) {
+                    if($DETDB->insert('remote_keys', $custom)) {
+                        return true;
+                    }
+                    else {
+                        push_output_message(array(
+                            'title' => 'Ошибка!',
+                            'text'  => 'Произошла неизвестная ошибка, возможно, ключ повторяется',
+                            'class' => 'alert alert-danger'
+                        ));
+                    }
+                }
+                else {
+                    push_output_message(array(
+                        'title' => 'Ошибка ключа!',
+                        'text'  => 'Воспользуйтесь генератором ключей',
+                        'class' => 'alert alert-danger'
+                    ));
+                }
+            }
+            else {
+                push_output_message(array(
+                    'title' => 'Ошибка!',
+                    'text'  => 'Ключ должен иметь длину от 16 до 20 символов',
+                    'class' => 'alert alert-danger'
+                ));
+            }
+        }
+        return false;
+    }
+
+    function update_remote_key($ID, $key) {
+        global $DETDB;
+        if(is_object($key)) {
+            $key = (array) $key;
+        }
+        if(is_merged($key) && isset($key['key_value'])) {
+            $L = strlen($key['key_value']);
+
+            $custom = set_merge(array(
+                'name'      => '',
+                'key_value' => '',
+                'rules'     => ''
+            ), $key);
+
+            if($L>=16 && $L<=20) {
+                if(preg_match('/^[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPRQSTUVWXYZ0123456789!@#$%^*()]{16,20}$/i', $custom['key_value'])) {
+                    if($DETDB->update('remote_keys', $custom, "WHERE ID=$ID")) {
+                        return true;
+                    }
+                    else {
+                        push_output_message(array(
+                            'title' => 'Ошибка!',
+                            'text'  => 'Произошла неизвестная ошибка, возможно, ключ повторяется',
+                            'class' => 'alert alert-danger'
+                        ));
+                    }
+                }
+                else {
+                    push_output_message(array(
+                        'title' => 'Ошибка ключа!',
+                        'text'  => 'Воспользуйтесь генератором ключей',
+                        'class' => 'alert alert-danger'
+                    ));
+                }
+            }
+            else {
+                push_output_message(array(
+                    'title' => 'Ошибка!',
+                    'text'  => 'Ключ должен иметь длину от 16 до 20 символов',
+                    'class' => 'alert alert-danger'
+                ));
+            }
+        }
+        return false;
+    }
+
+    function delete_remote_key($ID) {
+        global $DETDB;
+
+        if(is_numeric($ID)) {
+            return $DETDB->delete('remote_keys', $ID);
+        }
+        return false;
     }
 ?>

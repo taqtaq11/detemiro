@@ -1,4 +1,7 @@
 <?php
+    //Инициализация пользователя
+    int_user();
+
     //Подключение модулей
     require_once(ABSPATH . INCLUDES . '/basic-modules-doit.php');
 
@@ -32,6 +35,9 @@
     if(is_ajax()) {
         $PAGE->code  = 'ajax_call';
     }
+    elseif(is_remote()) {
+        $PAGE->code = 'remote_call';
+    }
     elseif(!$PAGE->code) {
         $key = get_current_key();
 
@@ -47,7 +53,7 @@
     uasort($ACTIONS, 'collector_sort');
 
     //Загрузка шаблонов
-    if(!is_ajax()) {
+    if(!is_connect()) {
         actions_zone('before_template');
 
         if($APAGES[$PAGE->code]->skelet) {

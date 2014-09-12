@@ -35,7 +35,18 @@
     function int_user() {
         global $DETDB, $USER;
 
-        if(check_login(true)) {
+        if(is_remote()) {
+            $USER = (object) array(
+                'ID'           => 0,
+                'login'        => 'system',
+                'display_name' => 'system',
+                'code'         => 'system',
+                'groups_ID'    => '',
+                'last_ip'      => $_SERVER['REMOTE_ADDR'],
+                'rules'        => get_remote_key_rules()
+            );
+        }
+        elseif(check_login(true)) {
             $USER = $DETDB->select('users', 'ID, display_name, groups_ID, last_ip, rules', true, "WHERE ID='" . $_COOKIE['user_ID'] . "'");
             $USER->check = true;
         }
@@ -53,9 +64,6 @@
 
         $USER = form_user_rules($USER);
     }
-
-    //Инициализация пользователя
-    int_user();
 
     //Получаю текущего пользователя
     function current_user($cols = '') {

@@ -11,15 +11,15 @@
     </div>
 
     <?php
-        if(count($groups) > 0):
+        if(is_array($groups) && count($groups) > 0):
     ?>
         <table class="table table-striped editable-table table-hover table-bordered" width="100%">
             <thead>
                 <tr>
-                    <th width="5%" data-table="ID" class="skip">ID</th>
-                    <th width="15%" data-table="code">Код</th>
-                    <th data-table="name">Имя</th>
-                    <th data-table="groups" class="skip">Права</th>
+                    <th width="5%">ID</th>
+                    <th width="15%">Код</th>
+                    <th>Имя</th>
+                    <th>Права</th>
                 </tr>
             </thead>
             <tbody>
@@ -66,11 +66,11 @@
     <?php endif; ?>
     <div id="dialog-add" class="dialog-basic input-control" title="Добавить группу">
         <form method="POST">
-            <div class="field form-group" data-table="code">
+            <div class="field form-group">
                 <label>Код группы</label>
                 <input type="text" maxlength="60" class="form-control data-control" name="code" value="">
             </div>
-            <div class="field form-group" data-table="name">
+            <div class="field form-group">
                 <label>Имя группы</label>
                 <input type="text" class="form-control data-control" name="name" value="">
             </div>

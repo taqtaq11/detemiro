@@ -338,7 +338,7 @@
             callback = callback || null;
 
             $.ajax({
-                url: '../includes/basic-ajax.php',
+                url: '../connect.php',
                 type: 'POST',
                 async: true,
                 data: {
@@ -355,6 +355,8 @@
                 },
                 success: function(res) {
                     res = $.form_res(res);
+
+                    console.log(res);
 
                     if($.isset(res.status)) {
                         if(res.status == 'success') {

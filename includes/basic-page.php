@@ -95,7 +95,7 @@
             $custom['body'] = $DETDB->select($par);
         }
 
-        if($custom['pagi'] && ($custom['all'] === null || ($custom['all'] && $custom['limit'] && ceil($custom['all'] / $custom['limit']) < $custom['current']))) {
+        if($custom['pagi'] && $custom['all'] && $custom['limit'] && ceil($custom['all'] / $custom['limit']) < $custom['current']) {
             redirect(get_current_key(), true);
         }
     }

@@ -22,6 +22,18 @@
         }
     ));
 
+    add_action(array(
+        'title'    => 'Календарь событий',
+        'code'     => 'remote_calendar_event',
+        'rule'     => 'public',
+        'category' => 'public',
+        'function' => function($params) {
+            $_GET['month'] = (isset($params['month'])) ? $params['month'] : $_GET['month'];
+            $_GET['year'] = (isset($params['year'])) ? $params['year'] : $_GET['year'];
+            show_apage('calendar_event');
+        }
+    ));
+
     add_apage(array(
         'title'    => 'Календарь событий для обмена',
         'code'     => 'calendar_event_json',

@@ -1,4 +1,4 @@
-#Action php5.5-script  /cgi-bin/php5.5.cgi
+#Action php5.5-script /cgi-bin/php5.5.cgi
 #AddType php5.5-script .php
 
 ErrorDocument 404 /index.php?page=404_error

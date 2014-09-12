@@ -1,10 +1,9 @@
 <?php
     add_action(array(
-        'code'     => 'hello',
-        'function' => 'hello_world'
+        'code'     => 'remote_hello',
+        'rule'     => 'public',
+        'function' => function() {
+            echo 'HELLO WORLD';
+        }
     ));
-
-    function hello_world() {
-        echo 'GOOD DAY!';
-    }
 ?>
