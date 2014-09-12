@@ -142,35 +142,42 @@
             $class = ($class) ? ' ' . $class : $class;
             $out .= '<div class="pagination-block"><ul class="pagination' . $class . '">';
 
-            if($PAGE->content['current'] <= 1) {
+            $current = $PAGE->content['current'];
+
+            if($current <= 1) {
                 $out .= '<li class="disabled"><span>&laquo;</span></li>';
             }
             else {
-                $out .= '<li><a href="' . get_page_link() . '&paged=' . ($PAGE->content['current'] - 1) . '">&laquo;</a></li>';
+                $out .= '<li><a href="' . get_page_link() . '&paged=' . ($current - 1) . '">&laquo;</a></li>';
             }
 
             for($i=1; $i<=$all; $i++) {
-                $out .= '<li';
-                if($i == $PAGE->content['current']) {
-                    $out .= ' class="active"';
+                if($i < ($current - 1) && $i > 3 || $i > ($current + 1) && $i < ($all - 2)) {
+                    if($i == 4 && $current > $i || $i == ($all - 3) && $current < $i) $out .= '<li><span>...</span></li>';
                 }
-                $out .= '>';
-
-                    if($i == $PAGE->content['current']) {
-                        $out .= '<span class="current">' . $i . '</span>';
+                else {
+                    $out .= '<li';
+                    if($i == $current) {
+                        $out .= ' class="active"';
                     }
-                    else {
-                        $out .= '<a href="' . get_page_link() . '&paged=' . $i .'">' . $i . '</a>';
-                    }
+                    $out .= '>';
 
-                $out .= '</li>';
+                        if($i == $current) {
+                            $out .= '<span class="current">' . $i . '</span>';
+                        }
+                        else {
+                            $out .= '<a href="' . get_page_link() . '&paged=' . $i .'">' . $i . '</a>';
+                        }
+
+                    $out .= '</li>';
+                }
             }
 
-            if($PAGE->content['current'] >= $all) {
+            if($current >= $all) {
                 $out .= '<li class="disabled"><span>&raquo;</span></li>';
             }
             else {
-                $out .= '<li><a href="' . get_page_link() . '&paged=' . ($PAGE->content['current'] + 1) .'">&raquo;</a></li>';
+                $out .= '<li><a href="' . get_page_link() . '&paged=' . ($current + 1) .'">&raquo;</a></li>';
             }
 
             $out .= '</ul></div>';

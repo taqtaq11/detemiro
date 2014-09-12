@@ -124,7 +124,7 @@
             set_glob_content(array(
                 'table' => 'options',
                 'pagi'  => true,
-                'limit' => 10
+                'limit' => 1
             ));
             get_template('settings/options.php');
         }
