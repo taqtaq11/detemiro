@@ -48,6 +48,10 @@
                 <td><?=$user->last_agent; ?></td>
             </tr>
             <tr>
+                <td>Последний IP</td>
+                <td><?=$user->last_ip; ?></td>
+            </tr>
+            <tr>
                 <td>Последнее место</td>
                 <td><?=$user->last_place; ?></td>
             </tr>
@@ -57,9 +61,9 @@
                     if(is_array($user->groups_ID)) {
                         $last = get_last_key($user->groups_ID);
                         foreach($user->groups_ID as $key=>$group) {
-                            $key = array_multi_search($group, $groups, 'ID');
-                            if($key !== null) {
-                                echo $groups[$key]->name;
+                            $key_search = array_multi_search($group, $groups, 'ID');
+                            if($key_search !== null) {
+                                echo $groups[$key_search]->name;
                                 if($key != $last) {
                                     echo ', ';
                                 }

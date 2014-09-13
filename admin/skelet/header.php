@@ -11,13 +11,15 @@
                 <?php $my_url = (check_rule('admin_users')) ? get_page_link('user_info') . '&user_id=' . current_user('ID') : '#'; ?>
                 <li id="login-panel" class="item-settings dropdown">
                     <a href="<?=$my_url;?>" class="dropdown-toggle" data-toggle="dropdown"><?=current_user('display_name');?></a>
-                    <ul class="subnav dropdown-menu" data-level="1">
+                    <div class="subnav dropdown-menu"><form method="POST">
                         <?php if($my_url != '#'):?>
-                            <li><a href="<?=$my_url;?>">Информация</a></li>
-                            <li><a href="<?=get_page_link('edit_user') . '&user_id=' . current_user('ID');?>">Настройка</a></li>
+                            <div class="user-settings btn-group input-group btn-group-justified">
+                                <a href="<?=$my_url;?>" class="btn btn-default" title="Информация"><i class="glyphicon glyphicon-user"></i></a>
+                                <a href="<?=get_page_link('edit_user') . '&user_id=' . current_user('ID');?>" class="btn btn-default" title="Настройка"><i class="glyphicon glyphicon-cog"></i></a>
+                            </div>
                         <?php endif; ?>
-                        <li><a class="button-control" data-action="logout">Выйти</a></li>
-                    </ul>
+                        <button name="logout" class="btn btn-danger btn-block">Выйти</button>
+                    </form></div>
                 </li>
             </ul></div>
             <div class="navbar-header">
